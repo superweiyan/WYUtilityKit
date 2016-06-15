@@ -10,7 +10,7 @@
 
 @interface WeakTimerTarget : NSObject
 
-@property (nonatomic, weak) id target;
+@property (nonatomic, weak) id aTarget;
 @property (nonatomic, assign) SEL selector;
 
 @end
@@ -19,17 +19,20 @@
 
 - (void)onTimeout
 {
-    if (self.target && [self.target respondsToSelector:_selector]) {
-        [self.target performSelector:_selector withObject:self];
+    if (self.aTarget && [self.aTarget respondsToSelector:_selector]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Warc-performSelector-leaks"
+        [self.aTarget performSelector:_selector withObject:self];
+#pragma clang diagnostic pop
     }
 }
 
 @end
 
 @interface WYTimer()
-{
-    NSTimer *timer;
-}
+
+@property (nonatomic, strong)  NSTimer *timer;
+
 @end
 
 @implementation WYTimer
@@ -37,10 +40,10 @@
 - (void)scheduleWithTime:(NSTimeInterval)ti
 {
     WeakTimerTarget *timeTarget = [[WeakTimerTarget alloc] init];
-    timeTarget.target = self;
+    timeTarget.aTarget = self;
     timeTarget.selector = @selector(onTimeout);
     
-    timer = [NSTimer scheduledTimerWithTimeInterval:ti
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:ti
                                              target:timeTarget
                                            selector:timeTarget.selector
                                            userInfo:nil
@@ -49,7 +52,7 @@
 
 - (void)fire
 {
-    [timer fire];
+    [self.timer fire];
 }
 
 - (void)onTimeout

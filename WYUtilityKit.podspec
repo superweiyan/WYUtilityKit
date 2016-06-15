@@ -16,16 +16,16 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "WYUtilityKit"
-  s.version      = "0.0.1"
-  s.summary      = "A short description of WYUtilityKit."
+  s.version      = "0.0.2"
+  s.summary      = "WYUtilityKit is a funcation utility kit."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = <<-DESC
-                   DESC
+  #s.description  = <<-DESC
+  #                  DESC
 
   s.homepage     = "https://github.com/superweiyan/WYUtilityKit.git"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
@@ -55,7 +55,7 @@ Pod::Spec.new do |s|
   s.author             = { "林伟彦" => "superweiyan@163.com" }
   # Or just: s.author    = "superweiyan"
   # s.authors            = { "superweiyan" => "superweiyan@163.com" }
-  # s.social_media_url   = "http://twitter.com/"
+  # s.social_media_url   = "http://twitter.com/superweiyan"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -64,7 +64,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  # s.platform     = :ios, "8.0"
+  s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "http://EXAMPLE/WYUtilityKit.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/superweiyan/WYUtilityKit.git", :tag =>s.version }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -90,12 +90,9 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  #s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  
-  s.source = "WYUtilityKit/*"
-  s.exclude_files = "WYUtilityKit/Exclude"
-
-  # s.public_header_files = "Classes/**/*.h"
+  s.source_files  = "*.{h,m}"
+  #s.exclude_files = "Exclude/*"
+  s.public_header_files = "*.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
