@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "WYUtilityKit"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "WYUtilityKit is a funcation utility kit."
 
   # This description is used to generate tags and improve search results.
@@ -120,7 +120,7 @@ Pod::Spec.new do |s|
 
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"
-
+s.libraries = 'Security', 'Foundation'
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
